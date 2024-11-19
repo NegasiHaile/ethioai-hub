@@ -12,7 +12,7 @@ const Card = ({ index, project }: ProjectProps) => {
   return (
     <div
       key={index}
-      className="w-full border rounded-md p-3 space-y-4 min-h-24"
+      className="w-full z-0 border rounded-md p-3 space-y-4 min-h-24"
     >
       {/* Card Header */}
       <div className="block sm:flex justify-between items-center border-b pb-2 space-x-5">
@@ -31,7 +31,7 @@ const Card = ({ index, project }: ProjectProps) => {
               return (
                 <p
                   key={i}
-                  className=" border rounded-md px-2 opacity-70 text-xs"
+                  className="z-0 border rounded-md px-2 opacity-70 text-xs"
                 >
                   {item}
                 </p>
@@ -45,7 +45,7 @@ const Card = ({ index, project }: ProjectProps) => {
             return (
               <p
                 key={i}
-                className="w-fit border rounded-md px-2 opacity-70 text-xs"
+                className="w-fit z-0 border rounded-md px-2 opacity-70 text-xs"
               >
                 {item}
               </p>
@@ -67,7 +67,7 @@ const Card = ({ index, project }: ProjectProps) => {
             return (
               <div
                 key={i}
-                className="flex bg-[#fb923c]/75 w-fit items-center space-x-1 text-xs opacity-65 rounded-md px-2 py-1 md:py-0"
+                className="flex bg-gray-500/80 text-white w-fit items-center space-x-1 text-xs opacity-65 rounded-md px-2 py-1 md:py-0"
               >
                 <IconStart className="w-4 h-4" />
                 <p>{item}</p>

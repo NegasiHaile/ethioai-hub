@@ -27,4 +27,5 @@ export interface ProjectType {
   field: string;
   links: LinkesTypes[];
   year: string;
+  content: string;
 }

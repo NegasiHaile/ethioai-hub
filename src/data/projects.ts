@@ -22,6 +22,7 @@ export const projects = [
       },
     ],
     year: "2024", // The year that the project published
+    content: "Dataset",
   },
 
   {
@@ -47,6 +48,7 @@ export const projects = [
       },
     ],
     year: "2024", // The year that the project published
+    content: "Model",
   },
   {
     id: 3,
@@ -71,5 +73,6 @@ export const projects = [
       },
     ],
     year: "2024", // The year that the project published
+    content: "Paper",
   },
 ];

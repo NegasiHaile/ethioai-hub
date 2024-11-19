@@ -1,4 +1,5 @@
 import IconFilter from "@/utils/icons/IconFilter";
+import Dropdown from "@/utils/ui/Dropdown";
 
 type SearchBarProps = {
   value: string;
@@ -7,13 +8,9 @@ type SearchBarProps = {
 
 const SearchBar = ({ value, onChange }: SearchBarProps) => {
   return (
-    <div className="w-full flex justify-between items-center space-x-5 space-y-5 py-3">
-      <div className="w-fit h-full cursor-pointer p-2">
-        <IconFilter />
-      </div>
-
+    <div className="w-full  block md:flex items-center space-y-3 md:space-x-5 md:justify-between md:space-y-0 py-3">
       {/* <SearchInput /> */}
-      <form className="w-full flex items-center max-w-sm">
+      <form className="w-full h-full flex items-center md:max-w-sm">
         <div className="relative w-full">
           <input
             name="searchbar"
@@ -21,7 +18,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
             onChange={(e) => onChange(e.target.value)}
             type="text"
             id="voice-search"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-gray-400 block w-full p-2.5  dark:bg-gray-700/50 dark:border-gray-600 dark:focus:outline-none dark:placeholder-gray-400 dark:text-white"
+            className="border border-gray-300 rounded-lg focus:border-gray-400 block w-full p-2.5 bg-transparent dark:border-gray-600 dark:focus:outline-none"
             placeholder="Search datasets, models and papers..."
             required
           />
@@ -46,6 +43,10 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
           </button>
         </div>
       </form>
+
+      {/* <div className="w-full md:w-fit h-full cursor-pointer bg-red-400"> */}
+      <Dropdown />
+      {/* </div> */}
     </div>
   );
 };
