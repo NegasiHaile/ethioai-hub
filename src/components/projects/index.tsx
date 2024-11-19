@@ -3,22 +3,26 @@ import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import Card from "@/utils/ui/Card";
 import SearchBar from "../search-bar";
-import { FilterOptionsTypes } from "@/utils/types";
+import { FilterOptionsTypes, ProjectType } from "@/utils/types";
 
+const initialCardsToShow = 20;
 const Projects = () => {
-  const [searchQuesry, setSearchQuery] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState([...projects]);
+  const [searchQuesry, setSearchQuery] = useState<string>("");
+  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>([]);
   const [checkedFilters, setCheckedFilters] = useState<FilterOptionsTypes>({
     contents: [], // Default value as an example
     fields: [],
     domains: [],
   });
+  const [projectsToDisplay, setProjectsToDisplay] = useState<ProjectType[]>([]);
+  const [itmesToshow, setItemsToShow] = useState<number>(initialCardsToShow);
 
   const onChangeSearchQuery = (value: string) => {
     setSearchQuery(value);
   };
 
   useEffect(() => {
+    setItemsToShow(initialCardsToShow);
     const searchProjects = () => {
       const query = searchQuesry.toLowerCase();
       const results = projects.filter((project) => {
@@ -34,6 +38,7 @@ const Projects = () => {
   }, [searchQuesry]);
 
   useEffect(() => {
+    setItemsToShow(initialCardsToShow);
     const filterProjects = () => {
       const results = projects.filter((project) => {
         // Check if project matches the search query
@@ -77,6 +82,11 @@ const Projects = () => {
     filterProjects();
   }, [checkedFilters, searchQuesry]); // Trigger when checkedFilters or searchQuery changes
 
+  useEffect(() => {
+    const loadedData = filteredProjects.slice(0, itmesToshow);
+    setProjectsToDisplay([...loadedData]);
+  }, [filteredProjects, itmesToshow]);
+
   return (
     <div className="w-full space-y-5">
       <SearchBar
@@ -86,8 +96,8 @@ const Projects = () => {
         onChange={onChangeSearchQuery}
       />
       <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 gap-5">
-        {filteredProjects.length > 0 ? (
-          filteredProjects.map((project, index) => {
+        {projectsToDisplay.length > 0 ? (
+          projectsToDisplay.map((project, index) => {
             if (index > 19) return null; // Limit to first 20 projects
             return <Card key={project.id} index={index} project={project} />;
           })
@@ -95,6 +105,18 @@ const Projects = () => {
           <div className="w-full py-24">
             <p className="opacity-65 text-2xl">No results found!</p>
           </div>
+        )}
+      </div>
+
+      <div className="w-full flex justify-center py-10">
+        {filteredProjects.length > projectsToDisplay.length && (
+          <button
+            type="button"
+            className=" w-fit p-2.5 bg-blue-500 rounded hover:opacity-70"
+            onClick={() => setItemsToShow(itmesToshow + 10)}
+          >
+            Load more contents
+          </button>
         )}
       </div>
     </div>
