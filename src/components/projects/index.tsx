@@ -2,14 +2,9 @@
 import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import Card from "@/utils/ui/Card";
-import { ProjectType } from "@/utils/types";
 import SearchBar from "../search-bar";
 
-type ProjectsProps = {
-  defaults: string;
-};
-
-const Projects = ({ defaults }: ProjectsProps) => {
+const Projects = () => {
   const [searchQuesry, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState([...projects]);
 
@@ -20,7 +15,7 @@ const Projects = ({ defaults }: ProjectsProps) => {
   useEffect(() => {
     const searchProjects = () => {
       const query = searchQuesry.toLowerCase();
-      const results = projects.filter((project, i) => {
+      const results = projects.filter((project) => {
         return (
           project.title.toLowerCase().includes(query) ||
           project.field.toLowerCase().includes(query)

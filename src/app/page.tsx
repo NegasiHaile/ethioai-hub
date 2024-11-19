@@ -14,7 +14,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <Projects defaults="featured" />
+      <Projects />
     </div>
   );
 }
