@@ -5,7 +5,7 @@ import Card from "@/utils/ui/Card";
 import SearchBar from "../search-bar";
 import { FilterOptionsTypes, ProjectType } from "@/utils/types";
 
-const initialCardsToShow = 20;
+const initialCardsToShow = 10;
 const Projects = () => {
   const [searchQuesry, setSearchQuery] = useState<string>("");
   const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>([]);
