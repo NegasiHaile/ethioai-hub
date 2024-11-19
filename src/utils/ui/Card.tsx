@@ -2,6 +2,7 @@ import Link from "next/link";
 import { IconStart } from "@/utils/icons";
 import { ProjectType } from "@/utils/types";
 import IconMoniter from "../icons/IconMoniter";
+import IconLink from "../icons/IconLink";
 
 interface ProjectProps {
   index: number;
@@ -42,6 +43,7 @@ const Card = ({ index, project }: ProjectProps) => {
 
         <div className="flex items-center space-x-1">
           {project.domain.map((item, i) => {
+            if (i > 1) return null;
             return (
               <p
                 key={i}
@@ -51,26 +53,49 @@ const Card = ({ index, project }: ProjectProps) => {
               </p>
             );
           })}
+          {project.domain.length > 2 && (
+            <p className="flex text-xs opacity-65">
+              +{project.domain.length - 2}
+            </p>
+          )}
         </div>
       </div>
 
       {/* CARD BODY */}
-      <div className="text-sm line-clamp-6 opacity-80 dark:font-thin tracking-wider">
+      <div className="text-sm line-clamp-4 opacity-80 dark:font-thin tracking-wider">
         <p>{project.description}</p>
+      </div>
+
+      {/* Languages */}
+      <div className="flex w-full items-center space-x-2">
+        {project.languages_used.map((item, i) => {
+          if (i > 2) return null;
+          return (
+            <div
+              key={i}
+              className="flex text-white w-fit items-center space-x-1 text-xs opacity-65 rounded-md px-2 py-1 md:py-0"
+            >
+              <IconStart className="w-4 h-4" />
+              <p>{item}</p>
+            </div>
+          );
+        })}
       </div>
 
       {/* CARD FOOTER */}
       <div className="flex justify-between items-center">
         <div className="flex w-full items-center space-x-5">
-          {project.languages_used.map((item, i) => {
-            if (i > 2) return null;
+          {project.links.map((item, i) => {
+            if (i > 3) return null;
             return (
               <div
                 key={i}
                 className="flex bg-gray-500/80 text-white w-fit items-center space-x-1 text-xs opacity-65 rounded-md px-2 py-1 md:py-0"
               >
-                <IconStart className="w-4 h-4" />
-                <p>{item}</p>
+                <IconLink className="w-4 h-4" />
+                <Link target="_blank" href={item.link}>
+                  {item.name}
+                </Link>
               </div>
             );
           })}

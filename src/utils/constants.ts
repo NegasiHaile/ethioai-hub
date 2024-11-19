@@ -3,12 +3,12 @@ export const filterOptions = {
   fields: ["NLP", "Computer Vision", "Speech Recognition", "Generative AI"],
   domains: [
     "Helath",
-    "Language",
     "Politics",
     "Education",
     "Agriculture",
     "Bussiness",
-    "Art",
+    "Art and Culture",
     "Constraction",
+    "Disaster and Accidents",
   ],
 };
