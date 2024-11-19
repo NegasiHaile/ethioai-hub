@@ -29,3 +29,9 @@ export interface ProjectType {
   year: string;
   content: string;
 }
+
+export interface FilterOptionsTypes {
+  contents: string[] | [];
+  fields: string[] | [];
+  domains: string[] | [];
+}

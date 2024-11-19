@@ -3,10 +3,16 @@ import { useEffect, useState } from "react";
 import { projects } from "@/data/projects";
 import Card from "@/utils/ui/Card";
 import SearchBar from "../search-bar";
+import { FilterOptionsTypes } from "@/utils/types";
 
 const Projects = () => {
   const [searchQuesry, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState([...projects]);
+  const [checkedFilters, setCheckedFilters] = useState<FilterOptionsTypes>({
+    contents: ["Dataset"],
+    fields: [],
+    domains: [],
+  });
 
   const onChangeSearchQuery = (value: string) => {
     setSearchQuery(value);
@@ -39,7 +45,12 @@ const Projects = () => {
           See all featured projects
         </Link>
       </div> */}
-      <SearchBar value={searchQuesry} onChange={onChangeSearchQuery} />
+      <SearchBar
+        checkedFilters={checkedFilters}
+        setCheckedFilters={setCheckedFilters}
+        value={searchQuesry}
+        onChange={onChangeSearchQuery}
+      />
       <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 gap-5">
         {/* PROJECT */}
         {/* {projects

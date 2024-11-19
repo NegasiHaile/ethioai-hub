@@ -1,5 +1,5 @@
 export const filterOptions = {
-  content: ["Dataset", "Model", "Paper"],
+  contents: ["Dataset", "Model", "Paper"],
   fields: ["NLP", "Computer Vision", "Speech Recognition", "Generative AI"],
   domains: [
     "Helath",

@@ -1,12 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import IconFilter from "../icons/IconFilter";
 import { filterOptions } from "../constants";
+import { FilterOptionsTypes } from "../types";
 
-const Dropdown = () => {
+type DropdownProps = {
+  checkedFilters: FilterOptionsTypes;
+  setCheckedFilters: Dispatch<SetStateAction<FilterOptionsTypes>>;
+};
+
+const Dropdown = ({ checkedFilters, setCheckedFilters }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [value, setValue] = useState("Filter by category");
-  // const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <>
@@ -16,9 +20,7 @@ const Dropdown = () => {
           className="fixed top-0 left-0 w-full h-full bg-transparent"
         />
       )}
-      <div
-        className={`relative flex sm:block w-fit items-center space-x-5 sm:space-x-0 space-y-2`}
-      >
+      <div className="relative flex sm:block w-fit items-center space-x-5 sm:space-x-0 space-y-2">
         <div className="relative w-full">
           <div
             className="border rounded-md w-full px-2 py-2 flex space-x-2 items-center opacity-60 cursor-pointer"
@@ -31,6 +33,9 @@ const Dropdown = () => {
             <div className="search-select min-h-24 max-h-[500px] z-50 border py-3 space-y-3 absolute w-full h-fit overflow-auto p-2 rounded-md z-100 bg-white dark:bg-black">
               {Object.entries(filterOptions).map(([key, values], index) => {
                 if (values.length === 0) return null;
+                // Ensuring the key is treated as a valid key from FilterOptionsTypes
+                const typedKey = key as keyof FilterOptionsTypes;
+
                 return (
                   <div
                     key={index}
@@ -44,9 +49,41 @@ const Dropdown = () => {
                       return (
                         <div
                           key={i}
-                          className={`flex font-extralight opacity-80 items-center space-x-1 cursor-pointer w-fit px-2`}
+                          className="flex font-extralight opacity-80 items-center space-x-1 cursor-pointer w-fit px-2"
                         >
-                          <div className="w-5 h-5 border rounded"></div>
+                          <input
+                            id={option}
+                            type="checkbox"
+                            checked={checkedFilters[typedKey].some(
+                              (item: string) =>
+                                item.toLowerCase() === option.toLowerCase()
+                            )}
+                            className="h-5 w-5 cursor-pointer transition-all rounded shadow hover:shadow-md border border-none bg-red-300 peer-checked:bg-gray-500 checked:border-slate-800"
+                            onChange={() => {
+                              const updatedFilters = { ...checkedFilters }; // Copy current filters
+                              const existing = updatedFilters[typedKey]; // Get the current array for the key
+
+                              // Add or remove the option based on its presence
+                              if (
+                                existing.some(
+                                  (item: string) =>
+                                    item.toLowerCase() === option.toLowerCase()
+                                )
+                              ) {
+                                updatedFilters[typedKey] = existing.filter(
+                                  (item: string) =>
+                                    item.toLowerCase() !== option.toLowerCase()
+                                );
+                              } else {
+                                updatedFilters[typedKey] = [
+                                  ...existing,
+                                  option,
+                                ];
+                              }
+
+                              setCheckedFilters(updatedFilters);
+                            }}
+                          />
                           <p>{option}</p>
                         </div>
                       );

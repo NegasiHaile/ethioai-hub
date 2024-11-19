@@ -1,12 +1,20 @@
-import IconFilter from "@/utils/icons/IconFilter";
+import { FilterOptionsTypes } from "@/utils/types";
 import Dropdown from "@/utils/ui/Dropdown";
+import { Dispatch, SetStateAction } from "react";
 
 type SearchBarProps = {
   value: string;
+  checkedFilters: FilterOptionsTypes;
+  setCheckedFilters: Dispatch<SetStateAction<FilterOptionsTypes>>;
   onChange: (value: string) => void;
 };
 
-const SearchBar = ({ value, onChange }: SearchBarProps) => {
+const SearchBar = ({
+  value,
+  checkedFilters,
+  setCheckedFilters,
+  onChange,
+}: SearchBarProps) => {
   return (
     <div className="w-full  block md:flex items-center space-y-3 md:space-x-5 md:justify-between md:space-y-0 py-3">
       {/* <SearchInput /> */}
@@ -44,9 +52,10 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
         </div>
       </form>
 
-      {/* <div className="w-full md:w-fit h-full cursor-pointer bg-red-400"> */}
-      <Dropdown />
-      {/* </div> */}
+      <Dropdown
+        checkedFilters={checkedFilters}
+        setCheckedFilters={setCheckedFilters}
+      />
     </div>
   );
 };
