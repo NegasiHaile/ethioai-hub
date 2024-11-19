@@ -9,7 +9,7 @@ const Projects = () => {
   const [searchQuesry, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState([...projects]);
   const [checkedFilters, setCheckedFilters] = useState<FilterOptionsTypes>({
-    contents: ["Dataset"],
+    contents: [], // Default value as an example
     fields: [],
     domains: [],
   });
@@ -28,23 +28,57 @@ const Projects = () => {
         );
       });
 
-      setFilteredProjects([...results]);
+      setFilteredProjects(results);
     };
     searchProjects();
   }, [searchQuesry]);
 
+  useEffect(() => {
+    const filterProjects = () => {
+      const results = projects.filter((project) => {
+        // Check if project matches the search query
+        const matchesSearch =
+          project.title.toLowerCase().includes(searchQuesry.toLowerCase()) ||
+          project.field.toLowerCase().includes(searchQuesry.toLowerCase());
+
+        // Check if project matches contents filter
+        const matchesContents = checkedFilters.contents.length
+          ? checkedFilters.contents.some((content) =>
+              project.category.some((projectContent) =>
+                projectContent.toLowerCase().includes(content.toLowerCase())
+              )
+            )
+          : true;
+
+        // Check if project matches fields filter
+        const matchesFields = checkedFilters.fields.length
+          ? checkedFilters.fields.some((field) =>
+              project.field.toLowerCase().includes(field.toLowerCase())
+            )
+          : true;
+
+        // Check if project matches domains filter
+        const matchesDomains = checkedFilters.domains.length
+          ? checkedFilters.domains.some((domain) =>
+              project.domain.some((projectDomain) =>
+                projectDomain.toLowerCase().includes(domain.toLowerCase())
+              )
+            )
+          : true;
+
+        return (
+          matchesSearch && matchesContents && matchesFields && matchesDomains
+        );
+      });
+
+      setFilteredProjects(results);
+    };
+
+    filterProjects();
+  }, [checkedFilters, searchQuesry]); // Trigger when checkedFilters or searchQuery changes
+
   return (
     <div className="w-full space-y-5">
-      {/* <div className="flex justify-between items-center">
-        <p>Featured Projects</p>
-        <Link
-          href={"/"}
-          className="text-blue-500 capitalize"
-          title="See all projects"
-        >
-          See all featured projects
-        </Link>
-      </div> */}
       <SearchBar
         checkedFilters={checkedFilters}
         setCheckedFilters={setCheckedFilters}
@@ -52,15 +86,9 @@ const Projects = () => {
         onChange={onChangeSearchQuery}
       />
       <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 gap-5">
-        {/* PROJECT */}
-        {/* {projects
-          .filter((project) => project[defaults as keyof ProjectType])
-          .map((project, index) => (
-            <Card key={project.id} index={index} project={project} />
-          ))} */}
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => {
-            if (index > 19) return null;
+            if (index > 19) return null; // Limit to first 20 projects
             return <Card key={project.id} index={index} project={project} />;
           })
         ) : (

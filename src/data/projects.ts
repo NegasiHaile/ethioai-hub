@@ -8,7 +8,7 @@ export const projects = [
     featured: true, // true/false
     domain: ["Health"], // Health, Language, Sport, Bussines, Agriculture
     category: ["Dataset"], // Dataset, Model, Paper
-    field: "Computer V", // Computer Vision, NLP ...
+    field: "Computer Vision", // Computer Vision, NLP ...
     links: [
       {
         id: 1,
@@ -59,7 +59,7 @@ export const projects = [
     featured: true, // true/false
     domain: ["Agriculture", "Health"], // Health, Language, Sport, Bussines, Agriculture
     category: ["Dataset", "Model"], // Dataset, Model, Paper
-    field: "Computer V", // Computer Vision, NLP ...
+    field: "Computer Vision", // Computer Vision, NLP ...
     links: [
       {
         id: 1,
