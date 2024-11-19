@@ -20,17 +20,17 @@ const Dropdown = ({ checkedFilters, setCheckedFilters }: DropdownProps) => {
           className="fixed top-0 left-0 w-full h-full bg-transparent"
         />
       )}
-      <div className="relative flex sm:block w-fit items-center space-x-5 sm:space-x-0 space-y-2">
+      <div className="relative flex sm:block w-full md:w-fit items-center space-x-5 sm:space-x-0 space-y-2">
         <div className="relative w-full">
           <div
-            className="border rounded-md w-full px-2 py-2 flex space-x-2 items-center opacity-60 cursor-pointer"
+            className="border rounded-md w-full min-w-56 px-2 py-2 flex space-x-2 items-center opacity-60 cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
           >
             <IconFilter />
             <p>Filter by category</p>
           </div>
           {isOpen && (
-            <div className="search-select min-h-24 max-h-[500px] z-50 border py-3 space-y-3 absolute w-full h-fit overflow-auto p-2 rounded-md z-100 bg-white dark:bg-black">
+            <div className="search-select min-h-24 max-h-[500px] z-50 border py-3 space-y-3 absolute min-w-full h-fit overflow-auto p-2 rounded-md z-100 bg-white dark:bg-black">
               {Object.entries(filterOptions).map(([key, values], index) => {
                 if (values.length === 0) return null;
                 // Ensuring the key is treated as a valid key from FilterOptionsTypes
@@ -84,7 +84,7 @@ const Dropdown = ({ checkedFilters, setCheckedFilters }: DropdownProps) => {
                               setCheckedFilters(updatedFilters);
                             }}
                           />
-                          <p>{option}</p>
+                          <p className=" text-nowrap">{option}</p>
                         </div>
                       );
                     })}
