@@ -26,7 +26,7 @@ const SearchBar = ({
             onChange={(e) => onChange(e.target.value)}
             type="text"
             id="voice-search"
-            className="border border-gray-300 rounded-lg focus:border-gray-400 block w-full p-2.5 bg-transparent dark:border-gray-600 dark:focus:outline-none"
+            className="border rounded-lg focus:border-gray-400 block w-full p-2.5 bg-transparent dark:focus:outline-none"
             placeholder="Search datasets, models and papers..."
             required
           />
