@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/models-hub",
+  basePath: "/ethioai-hub",
   /* config options here */
 };
 
