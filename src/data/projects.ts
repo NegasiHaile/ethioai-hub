@@ -2,12 +2,12 @@ export const projects = [
   {
     id: 1,
     title: "HornMT",
-    languages_used: ["Python", "Pythorch"], // Languages and libraries used
+    languages_used: ["Python", "Pytorch"], // Languages and libraries used
     creator: ["Lesan AI", "Asmelash Teka", "Gebrekirstos G. Gebremeskel"], // Who created the project
     description: `The HornMT repository contains data and the associated metadata for the project Machine Translation Benchmark Dataset for Languages in the Horn of Africa. It is a multi-way parallel corpus that will serve as a benchmark to accelerate progress in machine translation research and production systems for languages in the Horn of Africa.`,
     featured: true, // true/false
     domain: [
-      "Helath",
+      "Health",
       "Politics",
       "Education",
       "Agriculture",
@@ -58,4 +58,38 @@ export const projects = [
     year: "2024", // The year that the project published
     content: "Dataset",
   },
+  {
+    id: 3,
+    title: "AGE: Amharic, English, Ge'ez Dataset",
+    languages_used: ["Python", "pydicom", "dicom2jpg"], // Languages and libraries used
+    creator: ["Henok Biadglign Ademtew", "Mikiyas Girma Birbo"], // Who created the project
+    description: `AGE, an open-source tripartite alignment of Amharic, Ge’ez, and English parallel dataset. Additionally, we introduced a novel, 1,000 Ge’ez-centered sentences sourced from areas such as news and novels.`,
+    featured: true, // true/false
+    domain: [
+      "Health",
+      "Politics",
+      "Education",
+      "Agriculture",
+      "Bussiness",
+      "Art and Culture",
+      "Disaster and Accidents",
+    ],
+    category: ["Dataset"], // Dataset, Model, Paper
+    field: "Natural Language Processing", // Computer Vision, NLP ...
+    links: [
+      {
+        id: 1,
+        name: "GitHub",
+        link: "https://github.com/HenokB/AGE-Dataset/",
+      },
+      {
+        id: 2,
+        name: "Hugging Face",
+        link: "https://huggingface.co/datasets/Henok/age_dataset",
+      },
+    ],
+    year: "2024", // The year that the project published
+    content: "Dataset",
+  },
+
 ];
