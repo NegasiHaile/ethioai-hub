@@ -148,4 +148,40 @@ export const projects = [
     year: "2024", // The year that the project published
     content: "Model",
   },
+
+  {
+    id: 6,
+    title: "ProverbEval",
+    languages_used: ["Amharic", "Tigrinya", "Afan Oromo", "Gee'z", "English"], // Languages and libraries used
+    creator: [
+      "Israel Abebe Azime",
+      "Atnafu Lambebo Tonja",
+      "Tadesse Destaw Belay",
+      "Yonas Chanie",
+      "Bontu Fufa Balcha",
+      "Negasi Haile Abadi",
+      "Henok Biadglign Ademtew",
+      "Mulubrhan Abebe Nerea",
+      "Debela Desalegn Yadeta",
+      "Derartu Dagne Geremew",
+      "Assefa Atsbiha tesfau",
+      "Philipp Slusallek",
+      "Thamar Solorio",
+      "Dietrich Klakow",
+    ], // Who created the project
+    description: `Exploring LLM Evaluation Challenges for Low-resource Language Understanding.`,
+    featured: false,
+    domain: ["LLM"],
+    category: ["Dataset", "Paper"], // Dataset, Model, Paper
+    field: "NLP", // Computer Vision, NLP ...
+    links: [
+      {
+        id: 2,
+        name: "Paper",
+        link: "https://arxiv.org/pdf/2411.05049",
+      },
+    ],
+    year: "2025", // The year that the project published
+    content: "Model",
+  },
 ];
