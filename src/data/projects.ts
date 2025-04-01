@@ -60,8 +60,8 @@ export const projects = [
   },
   {
     id: 3,
-    title: "AGE: Amharic, Ge'ez, English Dataset",
-    languages_used: ["Python", "pydicom", "dicom2jpg"], // Languages and libraries used
+    title: "AGE: Amharic, English, Ge'ez Dataset",
+    languages_used: ["geez", "machine translation", "nlp"], // Languages and libraries used
     creator: ["Henok Biadglign Ademtew", "Mikiyas Girma Birbo"], // Who created the project
     description: `AGE, an open-source tripartite alignment of Amharic, Ge’ez, and English parallel dataset. Additionally, we introduced a novel, 1,000 Ge’ez-centered sentences sourced from areas such as news and novels.`,
     featured: true, // true/false
@@ -91,4 +91,69 @@ export const projects = [
     year: "2024", // The year that the project published
     content: "Dataset",
   },
+
+  {
+    id: 4,
+    title: "Amharic Llama",
+    languages_used: ["LLM", "Llama"], // Languages and libraries used
+    creator: ["Michael Andersland"], // Who created the project
+    description: `Uses Llama-2-7b as base. Does not use chat variant.`,
+    featured: true, 
+    domain: [
+      "LLM",
+    ],
+    category: ["Model"], // Dataset, Model, Paper
+    field: "NLP", // Computer Vision, NLP ...
+    links: [
+      {
+        id: 1,
+        name: "Huggingface",
+        link: "https://huggingface.co/iocuydi/llama-2-amharic-3784m",
+      },
+      {
+        id: 2,
+        name: "Github",
+        link: "https://github.com/iocuydi/amharic-llama-llava",
+      },
+      {
+        id: 3,
+        name: "Paper",
+        link: "https://arxiv.org/abs/2403.06354",
+      },
+    ],
+    year: "2024", // The year that the project published
+    content: "Model",
+  },
+
+
+  {
+    id: 5,
+    title: "Amharic QA Dataset",
+    languages_used: ["QA", "Dataset"], // Languages and libraries used
+    creator: ["Tilahun Abedissa§, Ricardo Usbeck, Yaregal Assabie"], // Who created the project
+    description: `Amharic Question Answering Dataset (Amh-QuAD). 2,628 question-answer pairs from over 378 Amharic Wikipedia articles.`,
+    featured: true, 
+    domain: [
+      "LLM",
+    ],
+    category: ["Dataset"], // Dataset, Model, Paper
+    field: "NLP", // Computer Vision, NLP ...
+    links: [
+      
+      {
+        id: 1,
+        name: "Github",
+        link: "https://github.com/semantic-systems/amharic-qa",
+      },
+      {
+        id: 2,
+        name: "Paper",
+        link: "https://arxiv.org/pdf/2303.03290",
+      },
+    ],
+    year: "2024", // The year that the project published
+    content: "Model",
+  },
 ];
+
+
