@@ -98,10 +98,8 @@ export const projects = [
     languages_used: ["LLM", "Llama"], // Languages and libraries used
     creator: ["Michael Andersland"], // Who created the project
     description: `Uses Llama-2-7b as base. Does not use chat variant.`,
-    featured: true, 
-    domain: [
-      "LLM",
-    ],
+    featured: true,
+    domain: ["LLM"],
     category: ["Model"], // Dataset, Model, Paper
     field: "NLP", // Computer Vision, NLP ...
     links: [
@@ -125,21 +123,17 @@ export const projects = [
     content: "Model",
   },
 
-
   {
     id: 5,
     title: "Amharic QA Dataset",
     languages_used: ["QA", "Dataset"], // Languages and libraries used
     creator: ["Tilahun Abedissa§, Ricardo Usbeck, Yaregal Assabie"], // Who created the project
     description: `Amharic Question Answering Dataset (Amh-QuAD). 2,628 question-answer pairs from over 378 Amharic Wikipedia articles.`,
-    featured: true, 
-    domain: [
-      "LLM",
-    ],
+    featured: true,
+    domain: ["LLM"],
     category: ["Dataset"], // Dataset, Model, Paper
     field: "NLP", // Computer Vision, NLP ...
     links: [
-      
       {
         id: 1,
         name: "Github",
@@ -154,7 +148,4 @@ export const projects = [
     year: "2024", // The year that the project published
     content: "Model",
   },
-
 ];
-
-
