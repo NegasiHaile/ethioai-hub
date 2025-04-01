@@ -7,6 +7,7 @@ export const filterOptions = {
     "Education",
     "Agriculture",
     "Bussiness",
+    "Religion",
     "Art and Culture",
     "Constraction",
     "Disaster and Accidents",
