@@ -66,16 +66,16 @@ export const projects = [
     description: `AGE, an open-source tripartite alignment of Amharic, Ge’ez, and English parallel dataset. Additionally, we introduced a novel, 1,000 Ge’ez-centered sentences sourced from areas such as news and novels.`,
     featured: true, // true/false
     domain: [
+      "Religion",
       "Health",
       "Politics",
       "Education",
       "Agriculture",
       "Bussiness",
       "Art and Culture",
-      "Disaster and Accidents",
     ],
     category: ["Dataset"], // Dataset, Model, Paper
-    field: "Natural Language Processing", // Computer Vision, NLP ...
+    field: "NLP", // Computer Vision, NLP ...
     links: [
       {
         id: 1,
